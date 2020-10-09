@@ -1,0 +1,48 @@
+﻿<div class="container">
+    <h3 class="mt-1">İlanlarım</h3>
+    <hr class="my-3">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group list-group-flush sticky-top shadow mb-3">
+                <a href="/user/ozet" class="list-group-item list-group-item-action active "><i class="fas fa-angle-double-right mx-1"></i>İlan Yönetimi</a>
+                <a href="/user/ilanlarim" class="list-group-item list-group-item-action "><i class="fas fa-angle-double-right mx-1 "></i>Yayında Olan İlanlarım</a>
+                <a href="/user/favorilerim" class="list-group-item list-group-item-action"><i class="fas fa-angle-double-right mx-1"></i>Favori İlanlarım</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 ">
+                        <div class="card-body bg-secondary text-white">
+                            <div class="row h-100">
+                                <div class="col-md-3">
+                                    <i class="far fa-newspaper fa-5x"></i>
+                                </div>
+                                <div class="col-md-9 text-right">
+                                    <h1>@ViewBag.ilansayisi</h1>
+                                    <h4>Yayındaki İlan Sayısı</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body bg-secondary text-white">
+                            <div class="row h-100">
+                                <div class="col-md-3">
+                                    <i class="far fa-thumbs-up fa-5x"></i>
+                                </div>
+                                <div class="col-md-9 text-right">
+                                    <h1>@ViewBag.favs</h1>
+                                    <h4>Favori İlan Sayısı</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

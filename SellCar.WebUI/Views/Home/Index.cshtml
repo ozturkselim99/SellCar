@@ -1,0 +1,66 @@
+﻿@model sellcar.webui.Models.IlanListViewModel
+
+<div class="container-fluid my-2">
+    <div class="row ">
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-success box w-100" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong><i class="fas fa-check mr-2"></i></strong>@TempData["message"]
+            </div>
+        }
+        <div class="col-lg-3 mb-2 ">
+            @await Component.InvokeAsync("Markalar")
+        </div>
+        <div class="col-lg-9 ">
+            @await Html.PartialAsync("_ads")
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h4 class="text-center my-4">Sizin İçin Önerilenler</h4>
+    <div class="row" id="car">
+        @foreach (var ilan in Model.ilanlar)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
+                @await Html.PartialAsync("_recommendedCar", ilan)
+            </div>
+        }
+    </div>
+    <h4 class="text-center my-4">Popüler Araba Markaları</h4>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a href="/cars/alfa-romeo"><img src="http://motoro.wpsixer.com/motoro-spide/wp-content/plugins/listing/assets/images/categories_icons/icons8-alfa-romeo-65.png" alt="..." class="img-thumbnail mb-3 mr-2 shadow "></a>
+            <a href="/cars/audi"><img src="http://motoro.wpsixer.com/motoro-spide/wp-content/plugins/listing/assets/images/categories_icons/audi.png " alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+            <a href="/cars/bmw"><img src="http://motoro.wpsixer.com/motoro-spide/wp-content/plugins/listing/assets/images/categories_icons/bmw.png" alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+            <a href="/cars/bugatti"><img src="http://motoro.wpsixer.com/motoro-spide/wp-content/plugins/listing/assets/images/categories_icons/bugatti.png" alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+            <a href="/cars/ferrari"><img src="http://motoro.wpsixer.com/motoro-spide/wp-content/plugins/listing/assets/images/categories_icons/fe.png" alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+            <a href="/cars/ford"><img src="http://motoro.wpsixer.com/motoro-spide/wp-content/plugins/listing/assets/images/categories_icons/icons8-ford-65.png" alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+            <a href="/cars/hyundai"><img src="http://motoro.wpsixer.com/motoro-spide/wp-content/plugins/listing/assets/images/categories_icons/hyundai.png" alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+            <a href="/cars/jaguar"><img src="http://motoro.wpsixer.com/motoro-spide/wp-content/plugins/listing/assets/images/categories_icons/icons8-jaguar-65.png" alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+            <a href="/cars/lada"><img src="http://motoro.wpsixer.com/motoro-spide/wp-content/plugins/listing/assets/images/categories_icons/lada-2.png" alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+            <a href="/cars/lamborghini"><img src="http://motoro.wpsixer.com/motoro-spide/wp-content/plugins/listing/assets/images/categories_icons/icons8-lamborghini-65.png" alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+            <a href="/cars/mazda"><img src="http://motoro.wpsixer.com/motoro-spide/wp-content/plugins/listing/assets/images/categories_icons/mazda.png" style="width: 74px; height: 74px;" alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+            <a href="/cars/mercedes-benz"><img src="http://motoro.wpsixer.com/motoro-spide/wp-content/plugins/listing/assets/images/categories_icons/icons8-mercedes-benz-65.png" alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+            <a href="/cars/nissan"><img src="http://motoro.wpsixer.com/motoro-spide/wp-content/plugins/listing/assets/images/categories_icons/icons8-nissan-65.png" alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+            <a href="/cars/porsche"><img src="http://motoro.wpsixer.com/motoro-spide/wp-content/plugins/listing/assets/images/categories_icons/po.png" alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+            <a href="/cars/suzuki"><img src="http://motoro.wpsixer.com/motoro-spide/wp-content/plugins/listing/assets/images/categories_icons/suzuki.png" alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+            <a href="/cars/volkswagen"><img src="http://motoro.wpsixer.com/motoro-spide/wp-content/plugins/listing/assets/images/categories_icons/volkswagen.png" alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+            <a href="/cars/renault"><img src="https://www.gusegarage.com/images/brands/renault.png" style="width: 74px; height: 74px;" alt="..." class="img-thumbnail mr-2 mb-3 shadow"></a>
+            <a href="/cars/kia"><img src="http://motoro.wpsixer.com/motoro-spide/wp-content/plugins/listing/assets/images/categories_icons/kia.png" style="width: 74px; height: 74px;" alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+            <a href="/cars/fiat"><img src="https://cdn.freebiesupply.com/logos/large/2x/fiat-3-logo-png-transparent.png" style="width: 74px; height: 74px;" alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+            <a href="/cars/toyota"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSUfkAjKuZKQkd33T8s-DcxGmmgGiU7bWNlKw&usqp=CAU" style="width: 74px; height: 74px;" alt="..." class="img-thumbnail mb-3 mr-2 shadow"></a>
+        </div>
+    </div>
+    @await Html.PartialAsync("_footer")
+</div>
+@section Scripts
+{
+    <script>
+        window.setTimeout(function () {
+            $(".box").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 1250);
+    </script>
+} 

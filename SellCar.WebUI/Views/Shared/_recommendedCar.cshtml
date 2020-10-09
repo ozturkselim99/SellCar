@@ -1,0 +1,23 @@
+﻿@model sellcar.entity.Ilan
+<div class="card rounded mb-2" >
+    <div class="card-image">
+        <span class="card-notify-year">@Model.yil</span>
+        <a href="/car/details/@Model.IlanId">
+            <img class="img-fluid" src="~/images/@(Model.IlanResimleri[0].url)">
+        </a>
+    </div>
+    <div class="card-body">
+        <h6 style="text-align: left;">@Model.Marka.adi @Model.seri @Model.model</h6>
+        @if (Model.ilanDetay == null)
+        {
+            <p class="text-muted">Araç ile ilgili ilan detayı yok.</p>
+        }
+        else
+        {
+            <p class="text-muted">@Html.Raw(Model.ilanDetay.Substring(0, 15) + "...")</p>
+        }
+        <div class="text-right">
+            <strong>@Model.fiyat.ToString("c")</strong>
+        </div>
+    </div>
+</div>

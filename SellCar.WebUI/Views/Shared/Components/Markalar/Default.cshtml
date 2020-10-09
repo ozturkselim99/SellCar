@@ -1,0 +1,10 @@
+﻿@model List<sellcar.entity.Marka>
+<div class="bg-light border-right markalar  ">
+    <div class="sidebar-heading"><strong><a href="/cars" class="text-decoration-none">Markalar</a></strong></div>
+    <div class="list-group list-group-flush overflow-auto ">
+        @foreach (var marka in Model)
+        {
+            <a href="/cars/@marka.url" class="list-group-item list-group-item-action bg-light">@marka.adi<span class="text-muted"> (@marka.Ilanlar.Count)</span></a>
+        }
+    </div>
+</div>

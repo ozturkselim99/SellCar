@@ -1,0 +1,70 @@
+﻿@model sellcar.webui.Models.IlanListViewModel
+@{
+    ViewData["Title"] = "ilanlarım";
+}
+<div class="container">
+    <h3 class="mt-1">İlanlarım</h3>
+    <hr class="my-3">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group list-group-flush sticky-top shadow mb-3">
+                <a href="/user/ozet" onclick="myFunction()" class="list-group-item list-group-item-action "><i class="fas fa-angle-double-right mx-1"></i>İlan Yönetimi</a>
+                <a href="/user/ilanlarim" class="list-group-item list-group-item-action active"><i class="fas fa-angle-double-right mx-1 "></i>Yayında Olan İlanlarım</a>
+                <a href="/user/favorilerim" class="list-group-item list-group-item-action "><i class="fas fa-angle-double-right mx-1"></i>Favori İlanlarım</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            @if (Model.ilanlar.Count == 0)
+            {
+                <div class="col-md-12">
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>Yayınlanmış herhangi bir ilanınız yok.
+                    </div>
+                </div>
+            }
+            <div class="row" id="myItems">
+                @if (TempData["message"] != null)
+                {
+                    <div class="alert box @TempData["alert-type"] w-100" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong><i class="fas fa-check mr-2"></i></strong>@TempData["message"]
+                    </div>
+                }
+                @foreach (var item in Model.ilanlar)
+                {
+                    <div class="card mb-3 w-100">
+                        <div class="card-body">
+                            <div class="row no-gutters h-100">
+                                <div class="col-md-4">
+                                    <a href="/car/details/@item.IlanId"><img src="~/images/@item.IlanResimleri[0].url" class="card-img" alt="..."></a>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5>@item.ilanBasligi</h5>
+                                        <p>@item.Marka.adi @item.seri @item.model</p>
+                                        <h6 class=" text-right">@item.fiyat.ToString("c")</h6>
+                                        <p class="text-right">
+                                            <a href="/user/ilan/@item.IlanId" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                            <a asp-controller="User" asp-action="IlanDelete" asp-route-id="@item.IlanId" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        window.setTimeout(function () {
+            $(".box").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 3000);
+    </script>
+}

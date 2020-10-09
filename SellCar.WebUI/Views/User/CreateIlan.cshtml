@@ -1,0 +1,373 @@
+﻿@model sellcar.webui.Models.CreateIlanModel
+<style>
+    .del {
+        position: absolute;
+        top: 0px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        background-color: rgba(255,255,255,0.6);
+        cursor: pointer;
+    }
+
+    .imgAdd {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        color: black;
+        box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
+        text-align: center;
+        line-height: 30px;
+        margin-top: 0px;
+        cursor: pointer;
+        font-size: 15px;
+    }
+</style>
+<form asp-controller="User" asp-action="CreateIlan" method="post" enctype="multipart/form-data">
+    <div class="col-md-10 offset-md-1">
+        <h3 class="mt-2">İlan Detayları</h3>
+        <hr class="my-3">
+        <div class="form-row mt-4">
+            <div class="col-sm-6 pb-3">
+                <label>İlan Başlığı</label>
+                <input class="form-control" asp-for="ilanBasligi">
+                <span asp-validation-for="ilanBasligi" class="text-danger"></span>
+            </div>
+            <div class="col-sm-3 pb-3">
+                <label>İl</label>
+                <select class="form-control" id="exampleSt" name="ilId">
+                    <option value="">İl Seçiniz</option>
+                    @foreach (var item in ViewBag.Iller)
+                    {
+                        <option value="@item.ilId">@item.adi</option>
+                    }
+                </select>
+                <span asp-validation-for="ilId" class="text-danger"></span>
+            </div>
+            <div class="col-sm-3 pb-3">
+                <label>Araç Fiyatı</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text">₺</span></div>
+                    <input type="number" class="form-control" asp-for="fiyat">
+                </div>
+                <span asp-validation-for="fiyat" class="text-danger"></span>
+            </div>
+            <div class="col-sm-3 pb-3">
+                <label>Marka</label>
+                <select class="form-control" name="markaId">
+                    <option value="">Marka Seçiniz</option>
+                    @foreach (var item in ViewBag.Markalar)
+                    {
+                        <option value="@item.MarkaId">@item.adi</option>
+
+                    }
+                </select>
+                <span asp-validation-for="markaId" class="text-danger"></span>
+            </div>
+            <div class="col-sm-3 pb-3">
+                <label>Seri</label>
+                <input class="form-control" asp-for="seri">
+                <span asp-validation-for="seri" class="text-danger"></span>
+            </div>
+            <div class="col-sm-4 pb-3">
+                <label>Model</label>
+                <input class="form-control" asp-for="model">
+                <span asp-validation-for="model" class="text-danger"></span>
+            </div>
+            <div class="col-sm-2 pb-3">
+                <label>Yıl</label>
+                <input type="number" class="form-control" asp-for="yil">
+                <span asp-validation-for="yil" class="text-danger"></span>
+            </div>
+            <div class="col-sm-3 pb-3">
+                <label>Kilometre</label>
+                <input type="number" min="0" class="form-control" asp-for="kilometre">
+                <span asp-validation-for="kilometre" class="text-danger"></span>
+            </div>
+
+            <div class="col-sm-3 pb-3">
+                <label>Vites</label>
+                <select class="form-control" asp-for="vitesTipi">
+                    <option value="">Vites tipini seçiniz</option>
+                    <option value="Otomatik">Otomatik</option>
+                    <option value="Manuel">Manuel</option>
+                    <option value="Yarı Otomatik">Yarı Otomatik</option>
+                </select>
+                <span asp-validation-for="vitesTipi" class="text-danger "></span>
+            </div>
+            <div class="col-sm-3 pb-3">
+                <label>Kasa Tipi</label>
+                <select class="form-control" asp-for="kasaTipi">
+                    <option value="">Kasa tipini seçiniz</option>
+                    <option value="Cabrio">Cabrio</option>
+                    <option value="Coupe">Coupe</option>
+                    <option value="Hatchback 3 kapı">Hatchback 3 kapı</option>
+                    <option value="Hatchback 5 kapı">Hatchback 5 kapı</option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="Station Wagon">Station Wagon</option>
+                    <option value="Crossover">Crossover</option>
+                    <option value="MPV">MPV</option>
+                    <option value="Roadster">Roadster</option>
+                </select>
+                <span asp-validation-for="kasaTipi" class="text-danger "></span>
+            </div>
+            <div class="col-sm-3 pb-3">
+                <label>Çekiş Tipi</label>
+                <select class="form-control" asp-for="cekisTipi">
+                    <option value="">Çekiş tipini seçiniz</option>
+                    <option value="Önden Çekiş">Önden Çekiş</option>
+                    <option value="Arkadan İtiş">Arkadan İtiş</option>
+                    <option value="4WD (Sürekli)">4WD (Sürekli)</option>
+                    <option value="AWD (Elektronik)">AWD (Elektronik)</option>
+                </select>
+                <span asp-validation-for="cekisTipi" class="text-danger "></span>
+            </div>
+            <div class="col-sm-3 pb-3">
+                <label>Yakıt</label>
+                <select class="form-control" asp-for="yakitTipi">
+                    <option value="">Yakıt tipini seçiniz</option>
+                    <option value="Benzin">Benzin</option>
+                    <option value="Benzin & LPG">Benzin & LPG</option>
+                    <option value="Dizel">Dizel</option>
+                    <option value="Hybrid">Hybrid</option>
+                    <option value="Elektrik">Elektrik</option>
+                </select>
+                <span asp-validation-for="yakitTipi" class="text-danger "></span>
+            </div>
+            <div class="col-sm-3 pb-3">
+                <label>Şehir İçi Tüketimi</label>
+                <input type="number" min="0" class="form-control" asp-for="sehirIciTuketim">
+            </div>
+            <div class="col-sm-3 pb-3">
+                <label>Şehir Dışı Tüketimi</label>
+                <input type="number" min="0" class="form-control" asp-for="sehirDisiTuketim">
+            </div>
+            <div class="col-sm-3 pb-3">
+                <label>Motor Gücü</label>
+                <input type="number" min="0" class="form-control" asp-for="motorGücü">
+                <span asp-validation-for="motorGücü" class="text-danger "></span>
+            </div>
+            <div class="col-sm-3 pb-3">
+                <label>Motor Hacmi</label>
+                <input type="number" min="0" class="form-control" asp-for="motorHacmi">
+            </div>
+            <div class="col-sm-3 pb-3">
+                <label>Hızlanma 0-100(sn)</label>
+                <input type="number" min="0" class="form-control" asp-for="hizlanma">
+            </div>
+            <div class="col-sm-3 pb-3">
+                <label>Azami Sürat(km/saat)</label>
+                <input type="number" min="0" class="form-control" asp-for="azamiSurati">
+            </div>
+            <div class="col-sm-3 pb-3">
+                <label>Takas</label>
+                <div class="form-group">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="takas" value="Evet" />Evet
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="takas" value="Hayır" />Hayır
+                        </label>
+                    </div>
+                </div>
+                <span asp-validation-for="takas" class="text-danger"></span>
+            </div>
+            <div class="col-sm-4 pb-3">
+                <label>Kimden</label>
+                <div class="form-group">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="kimden" value="Sahibinden" />Sahibinden
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="kimden" value="Galeriden" />Galeriden
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="kimden" value="Yetkili Bayiden" />Yetkili Bayiden
+                        </label>
+                    </div>
+                </div>
+                <span asp-validation-for="kimden" class="text-danger"></span>
+            </div>
+            <div class="col-sm-8 pb-3">
+                <label>Durumu</label>
+                <div class="form-group">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="durum" value="Sıfır" />Sıfır
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="durum" value="İkinci El" />İkinci El
+                        </label>
+                    </div>
+                </div>
+                <span asp-validation-for="durum" class="text-danger"></span>
+            </div>
+            <div class="col-md-12 pb-3">
+                <label>Renk</label>
+                <div class="form-group small">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="renk" value="Bej" />Bej
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="renk" value="Beyaz" />Beyaz
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="renk" value="Bordo" />Bordo
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="renk" value="Füme" />Füme
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="renk" value="Gri" />Gri
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="renk" value="Gümüş Gri" />Gümüş Gri
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="renk" value="Kırmızı" />Kırmızı
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline ">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="renk" value="Lacivert" />Lacivert
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="renk" value="Mavi" />Mavi
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="renk" value="Mor" />Mor
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="renk" value="Pembe" />Pembe
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="renk" value="Sarı" />Sarı
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="renk" value="Siyah" />Siyah
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="renk" value="Turkuaz" />Turkuaz
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="renk" value="Turuncu" />Turuncu
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="renk" value="Yeşil" />Yeşil
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" asp-for="renk" value="Kahverengi" />Kahverengi
+                        </label>
+                    </div>
+                </div>
+                <span asp-validation-for="renk" class="text-danger "></span>
+            </div>
+            <div class="col-md-12 pb-3">
+                <label>İlan Açıklaması</label>
+                <textarea class="form-control" id="editor" asp-for="ilanDetay"></textarea>
+                <small class="text-info">
+                    Açıklama ekleyin
+                </small>
+            </div>
+        </div>
+        <h3 class="mb-3">İlan Resimleri </h3>
+        <div class="row">
+            <div class="col-sm-3 mb-3">
+                <div class="card">
+                    <img class="card-img-top uploadImage"/>
+                    <div class="card-body">
+                        <label class="btn btn-success d-block ">
+                            <i class="fas fa-upload"></i><input name="files" type="file" class="uploadFile d-block" style="width: 0px;height: 0px;overflow: hidden;">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <i class="fa fa-plus imgAdd"></i>
+        </div>
+        <div class="alert alert-danger" role="alert" id="alert">
+            En az bir resim yükleyiniz
+        </div>
+        <button type="submit" class="btn btn-success btn-lg btn-block mb-2">İlanı Yayınla</button>
+    </div>
+</form>
+
+@section Scripts
+{
+    <script>
+        $(".imgAdd").click(function () {
+            $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-3 mb-3"><div class="card"><img class="card-img-top uploadImage" "/><div class="card-body"><label class="btn btn-success d-block "><i class="fas fa-upload"></i><input name="files" type="file" class="uploadFile d-block" style="width: 0px;height: 0px;overflow: hidden;"></label></div></div><i class="fa fa-trash-alt del"></i></div>');
+        });
+        $(document).on("click", "i.del", function () {
+            $(this).parent().remove();
+        });
+        $(function () {
+            $(document).on("change", ".uploadFile", function () {
+                var uploadFile = $(this);
+                var files = !!this.files ? this.files : [];
+                if (!files.length || !window.FileReader) return;
+
+                if (/^image/.test(files[0].type)) {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(files[0]);
+
+                    reader.onloadend = function () {
+
+                        uploadFile.parents(".card").find(".uploadImage").attr("src", this.result);
+                        $("#alert").hide();
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('editor')
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js" integrity="sha512-EanukVTZc4W9tUCLnDl069Izidg49PcNRKO1upLzKt9ajq66i+bXOtlzXcIbRhb6vVEGF6BCc8wQi5T1ztCpTQ==" crossorigin="anonymous"></script>
+}

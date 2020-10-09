@@ -1,0 +1,14 @@
+C:\Users\oztur\source\repos\SellCar\sellcar.business\bin\Debug\netstandard2.0\sellcar.business.deps.json
+C:\Users\oztur\source\repos\SellCar\sellcar.business\bin\Debug\netstandard2.0\sellcar.business.dll
+C:\Users\oztur\source\repos\SellCar\sellcar.business\bin\Debug\netstandard2.0\sellcar.business.pdb
+C:\Users\oztur\source\repos\SellCar\sellcar.business\obj\Debug\netstandard2.0\sellcar.business.csprojAssemblyReference.cache
+C:\Users\oztur\source\repos\SellCar\sellcar.business\obj\Debug\netstandard2.0\sellcar.business.AssemblyInfoInputs.cache
+C:\Users\oztur\source\repos\SellCar\sellcar.business\obj\Debug\netstandard2.0\sellcar.business.AssemblyInfo.cs
+C:\Users\oztur\source\repos\SellCar\sellcar.business\obj\Debug\netstandard2.0\sellcar.business.dll
+C:\Users\oztur\source\repos\SellCar\sellcar.business\obj\Debug\netstandard2.0\sellcar.business.pdb
+C:\Users\oztur\source\repos\SellCar\sellcar.business\bin\Debug\netstandard2.0\sellcar.data.dll
+C:\Users\oztur\source\repos\SellCar\sellcar.business\bin\Debug\netstandard2.0\sellcar.entity.dll
+C:\Users\oztur\source\repos\SellCar\sellcar.business\bin\Debug\netstandard2.0\sellcar.data.pdb
+C:\Users\oztur\source\repos\SellCar\sellcar.business\bin\Debug\netstandard2.0\sellcar.entity.pdb
+C:\Users\oztur\source\repos\SellCar\sellcar.business\obj\Debug\netstandard2.0\sellcar.business.csproj.CopyComplete
+C:\Users\oztur\source\repos\SellCar\sellcar.business\obj\Debug\netstandard2.0\sellcar.business.csproj.CoreCompileInputs.cache

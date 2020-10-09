@@ -1,0 +1,218 @@
+﻿@model List<sellcar.webui.Models.IlanItemModel>
+<div class="container pb-5 ">
+    <div class="text-right mt-2  ">
+        <a href="/cars" class="btn btn-primary">
+            <i class="fa fa-arrow-circle-left fa-fw"></i> Arabalara geri dön
+        </a>
+    </div>
+    <h2 class="text-center   ">
+        <small class="text-muted ">Araç Karşılaştırma</small>
+    </h2>
+    <div class="row my-4">
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-sm-6">
+                    <div class="comparison-table">
+                        <div class="comparison-item">
+                            <form asp-controller="cart" asp-action="remove" asp-route-id="@item.IlanId" method="post">
+                                <button type="submit" class="btn btn-link">
+                                    <i class="fas fa-trash-alt py-2 remove-item"></i>
+                                </button>
+                            </form>
+
+                            <a class="comparison-item-title" href="shop-single.html">@item.markaAdi @item.seri @item.model</a>
+                        </div>
+                    </div>
+                    <table class="table table-striped mt-2">
+                        <tbody>
+                            <tr>
+                                <td><strong>GENEL BAKIŞ<i class="fas fa-car-alt ml-2"></i></strong> </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Kasa Tipi / Kapı Sayısı</strong>
+                                </td>
+                                <td>
+                                    @item.kasaTipi
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Motor Tipi</strong>
+                                </td>
+                                <td>
+                                    @item.yakitTipi
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Üretim Yılı</strong>
+                                </td>
+                                <td>
+                                    @item.yil
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Yakıt Tüketimi (Şehir içi / Şehir dışı)</strong>
+                                </td>
+                                <td>
+                                    @item.sehirIciTuketim lt / @item.sehirDisiTuketim lt
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Motor Gücü</strong>
+                                </td>
+                                <td>
+                                    @item.motorGücü hp
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Şanzıman</strong>
+                                </td>
+                                <td>
+                                    @item.vitesTipi / @item.vitesSayisi Vites / @item.cekisTipi
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Hızlanma 0-100 km/saat</strong>
+                                </td>
+                                <td>
+                                    @item.hizlanma sn
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Azami Sürat</strong>
+                                </td>
+                                <td>
+                                    @item.azamiSurati km/saat
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>MOTOR VE PERFORMANS<i class="fas fa-tachometer-alt ml-2"></i></strong> </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Motor Hacmi </strong>
+                                </td>
+                                <td>
+                                    @item.motorHacmi cc
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong> Maksimum Güç</strong>
+                                </td>
+                                <td>
+                                    @item.motorGücü hp
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong> Maksimum Tork</strong>
+                                </td>
+                                <td>
+                                    250 Nm / 2.000 rpm
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Hızlanma 0-100 km/saat</strong>
+                                </td>
+                                <td>
+                                    @item.hizlanma sn
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Azami Sürat </strong>
+                                </td>
+                                <td>
+                                    @item.azamiSurati km/saat
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>YAKIT TÜKETİMİ<i class="fas fa-gas-pump ml-2"></i></strong> </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Yakıt Tipi</strong>
+                                </td>
+                                <td>
+                                    @item.yakitTipi
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Şehir içi(100 km'de) </strong>
+                                </td>
+                                <td>
+                                    @item.sehirIciTuketim lt
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Şehir dışı(100 km'de) </strong>
+                                </td>
+                                <td>
+                                    @item.sehirDisiTuketim lt
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Ortalama(100 km'de) </strong>
+                                </td>
+                                <td>
+                                    @item.ortalamaTuketim lt
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Yakıt Depo Hacmi </strong>
+                                </td>
+                                <td>
+                                    @item.yakitDepoHacmi lt
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            }
+            @if (Model.Count < 2)
+            {
+                <div class="col-md-6">
+                    <div class="comparison-table">
+                        <div class="comparison-item ">
+                            <a href="/cars">
+                                <i class="fas fa-plus-circle fa-8x"></i>
+                            </a>
+                            <a class="comparison-item-title mt-2 " href="shop-single.html">Araç Ekle</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-md-6">
+                <div class="comparison-table">
+                    <div class="comparison-item ">
+                        <a href="/cars">
+                            <i class="fas fa-plus-circle fa-8x"></i>
+                        </a>
+                        <a class="comparison-item-title mt-2 " href="shop-single.html">Araç Ekle</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,9 @@
+C:\Users\oztur\source\repos\SellCar\sellcar.entity\bin\Debug\netstandard2.0\sellcar.entity.deps.json
+C:\Users\oztur\source\repos\SellCar\sellcar.entity\bin\Debug\netstandard2.0\sellcar.entity.dll
+C:\Users\oztur\source\repos\SellCar\sellcar.entity\bin\Debug\netstandard2.0\sellcar.entity.pdb
+C:\Users\oztur\source\repos\SellCar\sellcar.entity\obj\Debug\netstandard2.0\sellcar.entity.csprojAssemblyReference.cache
+C:\Users\oztur\source\repos\SellCar\sellcar.entity\obj\Debug\netstandard2.0\sellcar.entity.AssemblyInfoInputs.cache
+C:\Users\oztur\source\repos\SellCar\sellcar.entity\obj\Debug\netstandard2.0\sellcar.entity.AssemblyInfo.cs
+C:\Users\oztur\source\repos\SellCar\sellcar.entity\obj\Debug\netstandard2.0\sellcar.entity.dll
+C:\Users\oztur\source\repos\SellCar\sellcar.entity\obj\Debug\netstandard2.0\sellcar.entity.pdb
+C:\Users\oztur\source\repos\SellCar\sellcar.entity\obj\Debug\netstandard2.0\sellcar.entity.csproj.CoreCompileInputs.cache

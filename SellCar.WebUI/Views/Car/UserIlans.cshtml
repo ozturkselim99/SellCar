@@ -1,0 +1,48 @@
+﻿@model sellcar.webui.Models.UserIlanListViewModel
+<div class="container my-3">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card" style="width: 100%">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.user.FirstName @Model.user.LastName<i class="fas fa-check-square ml-2" style="color: #4caf50;" data-toggle="tooltip" data-placement="right" title="Onaylı Üye"></i></h5>
+                    <h6 class="card-subtitle my-3 text-muted"><i class="fas fa-user mr-2"></i>@Model.user.MembershipDate.ToString().TrimEnd('0', ':') tarihinden beri üye</h6>
+                    <h6 class="card-subtitle my-3 text-muted"><i class="fas fa-mobile-alt mr-2"></i>@Model.user.PhoneNumber</h6>
+                    <h6 class="card-subtitle my-3 text-muted"><i class="fas fa-map-marker-alt mr-2"></i>@Model.user.Address</h6>
+                    <p class="card-text"><strong>İlan Sayısı: </strong>@Model.ilanlar.Count()</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>İlan Resmi</th>
+                        <th>Marka</th>
+                        <th>Seri</th>
+                        <th>Model</th>
+                        <th>Yıl</th>
+                        <th>Km</th>
+                        <th>Renk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ilanlar)
+                    {
+                        <tr>
+                            <td><a href="/car/details/@item.IlanId"><img src="~/images/@item.IlanResimleri[0].url" width=90></a> </td>
+                            <td>@item.Marka.adi</td>
+                            <td>@item.seri</td>
+                            <td>@item.model</td>
+                            <td>@item.yil</td>
+                            <td>@item.kilometre</td>
+                            <td>@item.renk</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    @await Html.PartialAsync("_footer")
+</div>

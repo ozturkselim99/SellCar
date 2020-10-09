@@ -1,0 +1,62 @@
+﻿@model sellcar.webui.Models.MarkaListViewModel
+@{
+    Layout = "_LayoutAdmin";
+}
+<div class="container-fluid my-2">
+    <h3 class="mt-1">Markalar</h3>
+    <hr class="my-3">
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Yeni Marka Ekle
+                </a>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <form asp-controller="Admin" asp-action="MarkaCreate" method="post">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 pb-3">
+                                <label>Marka</label>
+                                <input type="text" class="form-control" name="adi">
+                            </div>
+                            <div class="col-sm-6 pb-3">
+                                <label>Marka Url</label>
+                                <input type="text" class="form-control" name="url">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ekle</button>
+                    </form>
+                </div>
+            </div>
+            <table id="example" class="table table-striped table-bordered dt-responsive " style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Marka Id</th>
+                        <th>Marka</th>
+                        <th>Marka Url</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Markalar)
+                    {
+                        <tr>
+                            <td>@item.MarkaId</td>
+                            <td>@item.adi</td>
+                            <td>@item.url</td>
+                            <td>
+                                <a href="/admin/marka/@item.MarkaId" class="btn btn-primary btn-sm mr-2"><i class="fas fa-edit"></i></a>
+                                <form action="/admin/marka/delete" method="post" style="display:inline">
+                                    <input type="hidden" name="MarkaId" value="@item.MarkaId" />
+                                    <button type="submit" class="btn btn-danger btn-sm "><i class="fas fa-trash-alt"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

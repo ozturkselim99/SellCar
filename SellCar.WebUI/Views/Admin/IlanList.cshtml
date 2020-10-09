@@ -1,0 +1,68 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+}
+@model sellcar.webui.Models.IlanListViewModel
+<div class="container-fluid my-2">
+    <h3 class="mt-1">Tüm İlanlar</h3>
+    <hr class="my-3">
+    <div class="row">
+        <div class="col-md-12">
+            <table id="example" class="table table-striped table-bordered dt-responsive " style="width:100%">
+                <thead>
+                    <tr>
+                        <th>İlan No</th>
+                        <th>İlan Resmi</th>
+                        <th>Fiyatı</th>
+                        <th>Marka</th>
+                        <th>Seri</th>
+                        <th>Model</th>
+                        <th>Yıl</th>
+                        <th>Km</th>
+                        <th>Renk</th>
+                        <th>İl</th>
+                        <th>İlan Tarihi</th>
+                        <th>Anasayfa</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbkody>
+                    @for (int i = 0; i < Model.ilanlar.Count; i++)
+                    {
+                        <tr>
+                            <td>@Model.ilanlar[i].IlanId</td>
+                            <td><a href="/car/details/@Model.ilanlar[i].IlanId"><img src="~/images/@(Model.ilanlar[i].IlanResimleri[0].url)" width=90 height="67"></a> </td>
+                            <td>@Model.ilanlar[i].fiyat.ToString("c")</td>
+                            <td>@Model.ilanlar[i].Marka.adi</td>
+                            <td>@Model.ilanlar[i].seri</td>
+                            <td>@Model.ilanlar[i].model</td>
+                            <td>@Model.ilanlar[i].yil</td>
+                            <td>@Model.ilanlar[i].kilometre</td>
+                            <td>@Model.ilanlar[i].renk</td>
+                            <td>@Model.ilanlar[i].Il.adi</td>
+                            <td>@Model.ilanlar[i].ilanTarihi</td>
+                            <td>
+                                @if (Model.ilanlar[i].anasayfa)
+                                {
+                                    <i class="fas fa-check-circle"></i>
+                                }
+                                else
+                                {
+                                    <i class="fas fa-times-circle"></i>
+                                }
+                            </td>
+                            <td>
+                                <a href="/admin/ilan/@Model.ilanlar[i].IlanId" class="btn btn-primary btn-sm mr-2 mb-2"><i class="fas fa-edit"></i></a>
+                                <form action="/admin/ilan/delete" method="post" style="display:inline">
+                                    <input type="hidden" name="IlanId" value="@Model.ilanlar[i].IlanId" />
+                                    <button type="submit" class="btn btn-danger btn-sm "><i class="fas fa-trash-alt"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbkody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
